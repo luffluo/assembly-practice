@@ -21,7 +21,7 @@ code segment
         add bx, 2
         loop s
 
-        mov ax 4c00h
+        mov ax, 4c00h
         int 21h
 code ends
 
