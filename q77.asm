@@ -4,7 +4,9 @@
 ; 就是 当要进行内循环时，在外循环把外循环的计数器保存到某个寄存器里
 ; 当内循环完了后 再还回了
 
-assume cs:code, ds:data
+; 第二版 改用栈 暂存 cx 计数值
+
+assume cs:code, ds:data, ss:stack
 
 data segment
     db 'ibm             '
@@ -13,6 +15,10 @@ data segment
     db 'vax             '
 data ends
 
+stack segment
+    dw 0, 0, 0, 0, 0, 0, 0, 0
+stack ends
+
 code segment
     start: mov ax, data
            mov ds, ax
@@ -20,7 +26,7 @@ code segment
            mov si, 0
            mov cx, 4
 
-        s: mov dx, cx
+        s: push cx
            mov di, 0
            mov cx, 3
 
@@ -30,7 +36,7 @@ code segment
            inc di
            loop s0
            
-           mov cx, dx
+           pop cx
            add si, 16
            loop s
 
