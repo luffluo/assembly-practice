@@ -1,8 +1,10 @@
-assume cs:code,ds:data
+; 把 第一个字符串变成大写，第二个字符串变成小写
+
+assume cs:code, ds:data
 
 data segment
     db 'BaSiC'
-    db 'iNfOrMaTiOn'
+    db 'MinIX'
 data ends
 
 code segment
@@ -23,3 +25,5 @@ code segment
            mov ax, 4c00h
            int 21h
 code ends
+
+end start
