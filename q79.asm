@@ -3,7 +3,7 @@
 assume cs:code, ss:stack, ds:data
 
 stack segment
-    dw 0, 0, 0, 0, 0, 0, 0, 0
+    dw 8 dup (0) ; 8 个 0
 stack ends
 
 data segment
