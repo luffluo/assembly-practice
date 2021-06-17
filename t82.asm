@@ -11,6 +11,13 @@ stack segment
 stack ends
 
 code segment
+
+     ; Set 'space' to ax, data index + 1
+     apds: mov al, [bx]
+           mov ah, 0
+           inc bx
+           retf
+
     start: mov ax, data ; Init data segment
            mov ds, ax
 
@@ -28,10 +35,8 @@ code segment
            loop a
 
            ; push 'space' to stack
-           mov al, [bx]
-           mov ah, 0
+           call far ptr apds
            push ax
-           inc bx
 
            ; push 'to' to stack
            mov cx, 2
@@ -42,10 +47,8 @@ code segment
            loop b
 
            ; push 'space' to stack
-           mov al, [bx]
-           mov ah, 0
+           call far ptr apds
            push ax
-           inc bx
 
            mov cx, 4
         c: mov al, [bx]
@@ -66,7 +69,7 @@ code segment
         d: pop [bx]
            sub bx, 2
            loop d
-           
+
            mov ax, 4c00h
            int 21h
 code ends
