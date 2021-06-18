@@ -18,9 +18,9 @@ code segment
            mov ds, ax
            sub si, si ; Init data index = 0
 
-           mov dh, 8
-           mov dl, 30
-           mov cl, 2 ; 00000010b green word
+           mov dh, 8 ; Set row for display
+           mov dl, 30 ; Set column for display
+           mov cl, 2 ; color of word, 00000010b/green
 
            call show_str
 
