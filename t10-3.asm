@@ -33,6 +33,7 @@ code segment
            inc si
            mov cx, ax
            jcxz ok
+           mov [si], 0
            jmp short dtoc_ok
            sub si, si
   dtoc_ok: ret
